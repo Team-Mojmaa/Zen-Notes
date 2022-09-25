@@ -1,4 +1,4 @@
-"use strict";
+"use strict"
 const createButton = document.getElementById('add-new');
 // const noteInput = document.getElementById('note-list');
 
@@ -34,25 +34,23 @@ function displayNewNoteInCardsView() {
     </div>`;
     notesListView.appendChild(newCard); //visible on body
     console.log('step3(ii): display of currentNote on boday with idHash: ',currentNote.idHash)
-    
-    console.log("akash - test: +"+displayNewNote);
-
+    displayNewNote = true;
+    console.log("radhika - test seperate functions: +"+displayNewNote);
     console.log("here!!!!!!")
-    // on click of window - give a new function of display particular card in pop-up window
-    const allCards = document.getElementsByClassName("new-card");
-        
-    for(let aCard of allCards){
-        aCard.addEventListener('click', 
-             //update note
+    
+}
+
+
 function popUpUpdate(event){
-    let idOfCurrentNote = Number(aCard.id);
-    console.log(idOfCurrentNote);
+    let idOfCurrentNote = Number(event.target.id);
+    console.log("idOfCurrentNote from popUpUpdate",idOfCurrentNote);
     for (let note of notesList) {
-        console.log("inside notesList array of aCard")
+        console.log("inside notesList array of popUpUpdate")
         if (note.idHash === idOfCurrentNote) {
             let popUpView = document.createElement('div');
-            popUpView.innerHTML = `<div class="view-card">
-            <button id="close-btn-View">&times;</button>
+            popUpView.innerHTML = `<button id="close-btn-View" class="popup-edit-close-btn">&times;</button>
+            <div class="view-card">
+            <div class="popup-update">
             <label for="titleView">Title</label>
             <input type="text" name="titleView" id="titleView" value=`+note.title+`>
             <label for="descView">Description</label>
@@ -63,6 +61,7 @@ function popUpUpdate(event){
                 <button id="bold-btn-View">Bold</button>
                 <button id="underline-btn-View">Underline</button>
                 <button id="copy-btn-View">Copy</button>
+                <button id="copy-all-btn-View">Copy All</button>
             </div>`;
             // display pop-up  
             // if plan to add delete button - take it from here
@@ -77,9 +76,21 @@ function popUpUpdate(event){
             const copyBtnView = document.getElementById("copy-btn-View");
             const updateBtn = document.getElementById("update-btn");
             const closeBtnView = document.getElementById("close-btn-View");
+            const copyAllViewBtn = document.getElementById("copy-all-btn-View");
             boldBtnView.addEventListener('click', ()=>{
                 document.execCommand('bold');
                 var text = document.getElementById('descView').innerHTML;
+                
+            });
+
+            copyAllViewBtn.addEventListener('click', () => {
+                var range = document.createRange();
+                range.selectNode(document.getElementById("descView"));
+                window.getSelection().removeAllRanges(); // clear current selection
+                window.getSelection().addRange(range); // to select text
+                document.execCommand("copy");
+                window.getSelection().removeAllRanges();// to deselect
+                alert("Description copied to clipboard!");
                 
             });
         
@@ -92,6 +103,7 @@ function popUpUpdate(event){
             copyBtnView.addEventListener('click', ()=>{
                 document.execCommand('copy');
                 var text = document.getElementById('descView').innerHTML;
+                // var titleText = document.getElementById('titleView').value;
                 
             });
 
@@ -102,13 +114,15 @@ function popUpUpdate(event){
 
             updateBtn.addEventListener('click', ()=>{
                 var text = document.getElementById('descView').innerHTML;
+                var titleText = document.getElementById('titleView').value;
                 
                 note.description = text;
+                // updating altered note in notesList array
                 for (let noteObject of notesList){
                     if (noteObject.idHash == note.idHash ){
-                        console.log("from inside the loop ");
+                        console.log("from inside the loop of.... updating altered note in notesList array ");
                         noteObject.description = text;
-                        noteObject.title = note.title;
+                        noteObject.title = titleText;
                     }
                 }   
                 //delete prev with same id
@@ -123,7 +137,7 @@ function popUpUpdate(event){
                 let titleElem = elem.querySelector('#title'+note.idHash);
                 let descElem = elem.querySelector('#desc'+note.idHash);
 
-                console.log("VVIMP:===> "+titleElem+" "+descElem);
+                console.log("VVIMP radhika/checkk:===> "+titleElem+" "+descElem);
                 descElem.innerHTML = text;
                 titleElem.innerHTML = note.title;
                 // if(elem)
@@ -131,24 +145,37 @@ function popUpUpdate(event){
                 
                 // displayNewNoteInCardsView();
                 
-            });
-
-        
-            
-
-                            
+            });             
         } 
     }
 }
+// Add event listener on all cards inpedenpendant of any other function
+document.addEventListener( "click", cardsClickListener);
 
-        );
+
+function cardsClickListener(event) {
+    // if card clicked has a class of "new-card" then call popUpUpdate(event)
+    var element = event.target;
+    if (element.tagName == 'DIV' && element.classList.contains("new-card")){
+        console.log("hi!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+        popUpUpdate(event);
     }
-    
-    
-    // const oldUpdateCard = document.getElementsByClassName("add-card");    
-    // oldUpdateCard.addEventListener('click', popUpViewCard)
-    
+    // on click of window - give a new function of display particular card in pop-up window
+    // const allCards = document.getElementsByClassName("new-card");
+        
+    // for(let aCard of allCards){
+    //     aCard.addEventListener('click', 
+    //          //update note
+                
+
+    //     );
+    // }
+
 }
+
+
+ // const oldUpdateCard = document.getElementsByClassName("add-card");    
+    // oldUpdateCard.addEventListener('click', popUpViewCard)
 
 createButton.addEventListener('click', () => {
     // function-1: creates a pop-up window and generates and returns its id-hash
@@ -182,6 +209,7 @@ createButton.addEventListener('click', () => {
         <button id="bold-btn">Bold</button>
         <button id="underline-btn">Underline</button>
         <button id="copy-btn">Copy</button>
+        <button id="copy-all-btn">Copy All</button>
         <button id="delete-btn">Clear</button></div>
     </div>
     </div>`;
@@ -198,6 +226,18 @@ createButton.addEventListener('click', () => {
     const addData = document.getElementById('add-btn');
     const cancelBtn = document.getElementById('close-btn');
     const clearData = document.getElementById('delete-btn');
+    const copyAll = document.getElementById('copy-all-btn');
+
+    // copy All button
+    copyAll.addEventListener('click', () => {
+        var range = document.createRange();
+        range.selectNode(document.getElementById("desc"));
+        window.getSelection().removeAllRanges(); // clear current selection
+        window.getSelection().addRange(range); // to select text
+        document.execCommand("copy");
+        window.getSelection().removeAllRanges();// to deselect
+        alert("Description copied to clipboard!");
+    });
 
     // cancel button function-2(i)
     cancelBtn.addEventListener('click', () => {
@@ -213,7 +253,7 @@ createButton.addEventListener('click', () => {
         }
         
         document.getElementById("title").value = "";
-        document.getElementById("desc").value = "";
+        document.getElementById("desc").innerText = "";
     });
 
     // push bold, underline, copy data here later after figuring out selection and html part!!!!!!!!!!
@@ -327,6 +367,7 @@ createButton.addEventListener('click', () => {
     copyBtn.addEventListener('click', ()=>{
         document.execCommand('copy');
         var text = document.getElementById('desc').innerHTML;
+        // var titleText = document.getElementById('titleText').innerHTML;
         // $('#desc').html(text);
     });
    
@@ -603,4 +644,3 @@ createButton.addEventListener('click', () => {
 //     `;
 //     noteContainer.appendChild(newUINote);
 //   }
-
