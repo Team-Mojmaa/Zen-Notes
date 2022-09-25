@@ -41,8 +41,8 @@ function displayNewNoteInCardsView() {
 }
 
 
-function popUpUpdate(event){
-    let idOfCurrentNote = Number(event.target.id);
+function popUpUpdate(eventTarget){
+    let idOfCurrentNote = Number(eventTarget.id);
     console.log("idOfCurrentNote from popUpUpdate",idOfCurrentNote);
     for (let note of notesList) {
         console.log("inside notesList array of popUpUpdate")
@@ -156,10 +156,20 @@ document.addEventListener( "click", cardsClickListener);
 function cardsClickListener(event) {
     // if card clicked has a class of "new-card" then call popUpUpdate(event)
     var element = event.target;
+    var parentDivsArray = document.getElementsByClassName("new-card")
+    // If element itself is new-card or element is descendant of new-card, trigger pop-up event
     if (element.tagName == 'DIV' && element.classList.contains("new-card")){
         console.log("hi!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-        popUpUpdate(event);
+        popUpUpdate(event.target);
+    } else {
+        for (let parentDiv of parentDivsArray) {
+            if (parentDiv.contains(event.target)){
+                console.log("triggered parent")
+                popUpUpdate(parentDiv);
+            }
+        }
     }
+    
     // on click of window - give a new function of display particular card in pop-up window
     // const allCards = document.getElementsByClassName("new-card");
         
