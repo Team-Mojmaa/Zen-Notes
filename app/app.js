@@ -27,9 +27,9 @@ function displayNewNoteInCardsView() {
     // create New HTML for pushing currentNote
     let newCard = document.createElement('section');
     newCard.innerHTML += `<div class="new-card" id=`+currentNote.idHash+`>
-    <h2>Title</h2>
+    
     <h3 id="title`+currentNote.idHash+`" class="overflow-title">`+currentNote.title+`</h3>
-    <h2>Description</h2>
+    
     <p id="desc`+currentNote.idHash+`" class="overflow-desc">`+currentNote.description+`</p>
     </div>`;
     notesListView.appendChild(newCard); //visible on body

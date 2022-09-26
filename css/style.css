@@ -37,10 +37,15 @@ outline: 1px solid rgb(247, 247, 247);
 body{
     /* for smoot scroll behavior */
     scroll-behavior: smooth;
+
     color: white;
     background-color: black;
     position: relative;
-    padding-top: 40px;
+
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 a{
     text-decoration: none;
@@ -54,8 +59,8 @@ a{
     word-wrap: break-word; 
     overflow-wrap: break-word;
     text-overflow: ellipsis;
-    font-weight: 500;
-    margin-bottom: 5%;
+    font-weight: 700;
+    margin-bottom: 2%;
 }
 
 
@@ -76,8 +81,13 @@ a{
 
 #header{
     display: flex;
-    justify-content: space-around;      
+    justify-content: space-around;
     align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background: black;
+    padding: 2%;
 }
 
 .card{
@@ -120,8 +130,10 @@ footer p a{
 
 footer{
     font-size: 0.8rem;
-    text-align: center;
-    padding: 20px;
+    display: flex;
+    justify-content: center;
+    margin-top: auto;
+    padding: 1%;
 }
 
 #add-new{
@@ -159,12 +171,13 @@ main{
 }
 
 #notes-list{
-    display: flex;
-    flex-flow: row wrap;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: var(--small-spacing);
     margin: 30px;
     margin-left: 50px;
-    justify-content: space-around;
+    justify-content: center;
+    justify-items: stretch;
 }
 
 .add-card{
@@ -232,14 +245,12 @@ main{
 }
 
 .new-card{
-    height: var(--height-card);
-    width: var(--width-card);
-    
+    height: 100%;
+    width: 95%;
     display: flex;
     justify-content: center;
-    align-items: center;
     border-radius: 8px;
-    margin: 20px;
+    padding: 3%;
 }
 
 .new-card {
@@ -256,7 +267,7 @@ main{
 }
 
 .new-card:hover{
-    transform: scale(1.1);
+    transform: scale(1.05);
     transition: 0.5s ease-in-out;
 }
 
