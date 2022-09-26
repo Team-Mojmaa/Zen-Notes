@@ -2,7 +2,7 @@
 
 :root{
     --primary-color: #1E2022;
-    --secondary-color: #52616B;
+    --secondary-color: #0D7377;
     --third-color: #C9D6DF;
     --text-color: #F0F5F9;
     --transparent-bg: rgba(30 32 34/0.8);
@@ -329,7 +329,7 @@ main{
     
     border: none;
     outline: none;
-    color: var(--secondary-color);
+    color: var(--primary-color);
     background: var(--third-color);
     cursor: pointer;
     position: relative;
