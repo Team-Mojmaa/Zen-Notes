@@ -81,6 +81,10 @@ a{
     margin-bottom: 2%;
 }
 
+input {
+    border: none;
+}
+
 
 .overflow-desc{
     height: calc(4*(1.6em));
@@ -149,7 +153,8 @@ footer p a{
 footer{
     font-size: 0.8rem;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     margin-top: auto;
     padding: 1%;
 }
@@ -231,6 +236,38 @@ main{
     padding: 20px;
     margin: 20px;
 }
+
+.close-window-popup-add{
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 50px;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 3;
+    border: none;
+    background-color: transparent;
+    color: black;
+    padding: 20px;
+    margin: 20px;
+}
+
+.close-window-popup-add:hover{
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 50px;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 3;
+    border: none;
+    background-color: transparent;
+    color: brown;
+    padding: 20px;
+    margin: 20px;
+}
+
+
 
 .popup-container{
     display: flex;
@@ -407,6 +444,15 @@ main{
     min-height: 30%;
 }
 
+.popup-edit-close-btn:hover{
+
+    background-color: transparent;
+    color: brown;
+}
+
+
+/* media queries */
+
 @media (width > 570px) {
     #notes-list{
         display: grid;
@@ -431,6 +477,94 @@ main{
         justify-items: stretch;
         
     }
+}
+
+
+@media (width <480px) {
+    .popup-container{
+        display: flex;
+        flex-flow: column wrap;
+        justify-content: space-around;
+        width: 90%;
+        height: 78%;
+        background-color: var(--third-color);
+        padding: 25px;
+        border-radius: 20px;
+    }
+
+    .close-window-popup-add{
+        position: absolute;
+        top: 0;
+        right: 0;
+        font-size: 50px;
+        padding: 10px;
+        cursor: pointer;
+        z-index: 3;
+        border: none;
+        background-color: transparent;
+        color: black;
+        padding: 20px;
+        margin: 20px;
+        margin-top: 50px;
+    }
+
+    .popup-edit-close-btn{
+        position: fixed;
+        top: 0;
+        right: 0;
+        font-size: 50px;
+        padding: 10px;
+        cursor: pointer;
+        z-index: 3;
+        border: none;
+        background-color: transparent;
+        color: black;
+        padding: 20px;
+        margin: 20px;
+        margin-top: 50px;
+    }
+    .close-window-popup-add:hover{
+        position: absolute;
+        top: 0;
+        right: 0;
+        font-size: 50px;
+        padding: 10px;
+        cursor: pointer;
+        z-index: 3;
+        border: none;
+        background-color: transparent;
+        color: brown;
+        padding: 20px;
+        margin: 20px;
+        margin-top: 50px;
+    }
+    .popup-edit-close-btn:hover{
+        position: fixed;
+        top: 0;
+        right: 0;
+        font-size: 50px;
+        padding: 10px;
+        cursor: pointer;
+        z-index: 3;
+        border: none;
+        background-color: transparent;
+        color: brown;
+        padding: 20px;
+        margin: 20px;
+        margin-top: 50px;
+    }
+
+    .popup-update{
+        display: flex;
+        flex-flow: column wrap;
+        justify-content: space-around;
+        width: 90%;
+        height: 78%;
+        background-color: var(--third-color);
+        padding: 25px;
+        border-radius: 20px;
+    }
+
 }
 
 
