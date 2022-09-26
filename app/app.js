@@ -80,7 +80,7 @@ function popUpUpdate(eventTarget){
             const updateBtn = document.getElementById("update-btn");
             const closeBtnView = document.getElementById("close-btn-View");
             const copyAllViewBtn = document.getElementById("copy-all-btn-View");
-            const deleteBtn = document.getElementById("delete-btn-View");
+            // const deleteBtn = document.getElementById("delete-btn-View");
             
 
             boldBtnView.addEventListener('click', ()=>{
@@ -180,9 +180,11 @@ function popUpUpdate(eventTarget){
             //             noteObject.title = titleText;
             //         }
             //     }   
-            //     // deleting note in HTML display
-            //     let notesListView = document.getElementById("notes-list");
-
+            //     // let notesListView = document.getElementById("notes-list");
+            //     // deleting note in HTML display section > div.new-card
+            //     var element = document.querySelector('section' + itemid ); // will return element
+            //     var element = document.getElementById('div_' + itemid ); // will return element
+            //     element.parentNode.removeChild(element); // will remove the element from DOM
 
             //     // Removing PopUpWindow
             //     document.body.removeChild(popUpView);
