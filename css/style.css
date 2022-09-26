@@ -606,3 +606,7 @@ main{
 
 
 
+/* for extra divs */
+.new-card div {
+    display: none;
+}
