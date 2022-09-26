@@ -95,7 +95,8 @@ function popUpUpdate(eventTarget){
 
             let titleViewDiv = document.getElementById("titleView");
             titleViewDiv.addEventListener('paste', (event) => {
-                event.preventDefault();
+                // alert("Paste is not allowed here!");
+                return;
             
                 let paste = (event.clipboardData || window.clipboardData).getData('text');
                 // console.log('paste object: ',paste)
@@ -355,6 +356,9 @@ createButton.addEventListener('click', () => {
     const cancelBtn = document.getElementById('close-btn');
     const clearData = document.getElementById('delete-btn');
     const copyAll = document.getElementById('copy-all-btn');
+    const titleInput = document.getElementById('title');
+    
+    
 
     // copy All button
     copyAll.addEventListener('click', () => {
@@ -384,9 +388,36 @@ createButton.addEventListener('click', () => {
         document.getElementById("desc").innerText = "";
     });
 
+    // let titleDiv = document.getElementById("title");
+    // titleDiv.addEventListener('paste', (event) => {
+    //             event.preventDefault();
+    //             alert("This action is not allowed here!");
+    //             return;
+            
+    //             let paste = (event.clipboardData || window.clipboardData).getData('text');
+    //             // console.log('paste object: ',paste)
+    //             // console.log('paste object: ',paste)
+    //             let HTMLerror = false;
+    //             for (let i=0; i<paste.length;i++){
+    //                 if (paste[i] === '<' || paste[i] === '>'){
+    //                     alert("Special Characters < and > are not allowed values")
+    //                     HTMLerror = true;
+    //                     break;
+    //                 }
+    //             }
+    //             if (HTMLerror === false) {
+    //                 const selection = window.getSelection();
+    //                 if (!selection.rangeCount) return;
+    //                 selection.deleteFromDocument();
+    //                 selection.getRangeAt(0).insertNode(document.createTextNode(paste));
+    //             }
+
+    // });
+
     let titleDiv = document.getElementById("title");
             titleDiv.addEventListener('paste', (event) => {
-                event.preventDefault();
+                // alert("Paste is not allowed here!");
+                return;
             
                 let paste = (event.clipboardData || window.clipboardData).getData('text');
                 // console.log('paste object: ',paste)
@@ -406,7 +437,7 @@ createButton.addEventListener('click', () => {
                     selection.getRangeAt(0).insertNode(document.createTextNode(paste));
                 }
 
-    });
+            });
 
     let descDiv = document.getElementById("desc");
     descDiv.addEventListener('paste', (event) => {
@@ -572,7 +603,7 @@ createButton.addEventListener('click', () => {
     // });
 
 
-
+        
 
     addData.addEventListener('click', () => {
         // function-2(main): add details of new note
