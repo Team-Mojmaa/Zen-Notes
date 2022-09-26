@@ -61,8 +61,11 @@ function popUpUpdate(eventTarget){
                 <button id="underline-btn-View">Underline</button>
                 <button id="copy-btn-View">Copy <i class="fa-solid fa-copy"></i></button>
                 <button id="copy-all-btn-View">Copy All</button>
+                
             </div>
             <input type="hidden" value="`+note.idHash+`">`;
+
+            // <button id="delete-btn-View">Delete</button>
             // display pop-up  
             // if plan to add delete button - take it from here
             // <button id="delete-btn-View">Delete</button></div>
@@ -77,11 +80,37 @@ function popUpUpdate(eventTarget){
             const updateBtn = document.getElementById("update-btn");
             const closeBtnView = document.getElementById("close-btn-View");
             const copyAllViewBtn = document.getElementById("copy-all-btn-View");
+            const deleteBtn = document.getElementById("delete-btn-View");
+            
 
             boldBtnView.addEventListener('click', ()=>{
                 document.execCommand('bold');
                 var text = document.getElementById('descView').innerHTML;
                 
+            });
+
+            let titleViewDiv = document.getElementById("titleView");
+            titleViewDiv.addEventListener('paste', (event) => {
+                event.preventDefault();
+            
+                let paste = (event.clipboardData || window.clipboardData).getData('text');
+                // console.log('paste object: ',paste)
+                // console.log('paste object: ',paste)
+                let HTMLerror = false;
+                for (let i=0; i<paste.length;i++){
+                    if (paste[i] === '<' || paste[i] === '>'){
+                        alert("Special Characters < and > are not allowed values")
+                        HTMLerror = true;
+                        break;
+                    }
+                }
+                if (HTMLerror === false) {
+                    const selection = window.getSelection();
+                    if (!selection.rangeCount) return;
+                    selection.deleteFromDocument();
+                    selection.getRangeAt(0).insertNode(document.createTextNode(paste));
+                }
+
             });
 
             let descViewDiv = document.getElementById("descView");
@@ -91,11 +120,21 @@ function popUpUpdate(eventTarget){
                 let paste = (event.clipboardData || window.clipboardData).getData('text');
                 // console.log('paste object: ',paste)
                 // console.log('paste object: ',paste)
-            
-                const selection = window.getSelection();
-                if (!selection.rangeCount) return;
-                selection.deleteFromDocument();
-                selection.getRangeAt(0).insertNode(document.createTextNode(paste));
+                let HTMLerror = false;
+                for (let i=0; i<paste.length;i++){
+                    if (paste[i] === '<' || paste[i] === '>'){
+                        alert("Special Characters < and > are not allowed values")
+                        HTMLerror = true;
+                        break;
+                    }
+                }
+                if (HTMLerror === false) {
+                    const selection = window.getSelection();
+                    if (!selection.rangeCount) return;
+                    selection.deleteFromDocument();
+                    selection.getRangeAt(0).insertNode(document.createTextNode(paste));
+                }
+
             });
 
             copyAllViewBtn.addEventListener('click', () => {
@@ -125,6 +164,32 @@ function popUpUpdate(eventTarget){
             closeBtnView.addEventListener('click', ()=>{ 
                 document.body.removeChild(popUpView);
             });
+
+
+            // deleteBtn.addEventListener('click', ()=>{
+            //     let userChoice = prompt("Are you sure you want to delete Note?", 'Yes');
+            //     // if userChoice is No,return, else delete Note 
+            //     if(userChoice != 'Yes'){
+            //         return;
+            //     }
+            //     // deleting note in notesList array
+            //     for (let noteObject of notesList){
+            //         if (noteObject.idHash == note.idHash ){
+            //             console.log("from inside the loop of.... updating altered note in notesList array ");
+            //             noteObject.description = text;
+            //             noteObject.title = titleText;
+            //         }
+            //     }   
+            //     // deleting note in HTML display
+            //     let notesListView = document.getElementById("notes-list");
+
+
+            //     // Removing PopUpWindow
+            //     document.body.removeChild(popUpView);
+            //     console.log("!!!!!printing notesList array after deleting note:",notesList);
+
+
+            // });
             
 
             updateBtn.addEventListener('click', ()=>{
@@ -291,6 +356,30 @@ createButton.addEventListener('click', () => {
         document.getElementById("desc").innerText = "";
     });
 
+    let titleDiv = document.getElementById("title");
+            titleDiv.addEventListener('paste', (event) => {
+                event.preventDefault();
+            
+                let paste = (event.clipboardData || window.clipboardData).getData('text');
+                // console.log('paste object: ',paste)
+                // console.log('paste object: ',paste)
+                let HTMLerror = false;
+                for (let i=0; i<paste.length;i++){
+                    if (paste[i] === '<' || paste[i] === '>'){
+                        alert("Special Characters < and > are not allowed values")
+                        HTMLerror = true;
+                        break;
+                    }
+                }
+                if (HTMLerror === false) {
+                    const selection = window.getSelection();
+                    if (!selection.rangeCount) return;
+                    selection.deleteFromDocument();
+                    selection.getRangeAt(0).insertNode(document.createTextNode(paste));
+                }
+
+    });
+
     let descDiv = document.getElementById("desc");
     descDiv.addEventListener('paste', (event) => {
         event.preventDefault();
@@ -298,11 +387,20 @@ createButton.addEventListener('click', () => {
         let paste = (event.clipboardData || window.clipboardData).getData('text');
         // console.log('paste object: ',paste)
         // console.log('paste object: ',paste)
-       
-        const selection = window.getSelection();
-        if (!selection.rangeCount) return;
-        selection.deleteFromDocument();
-        selection.getRangeAt(0).insertNode(document.createTextNode(paste));
+        let HTMLerror = false;
+        for (let i=0; i<paste.length;i++){
+            if (paste[i] === '<' || paste[i] === '>'){
+                alert("Special Characters < and > are not allowed values")
+                HTMLerror = true;
+                break;
+            }
+        }
+        if (HTMLerror === false) {
+            const selection = window.getSelection();
+            if (!selection.rangeCount) return;
+            selection.deleteFromDocument();
+            selection.getRangeAt(0).insertNode(document.createTextNode(paste));
+        }
     });
 
     // push bold, underline, copy data here later after figuring out selection and html part!!!!!!!!!!

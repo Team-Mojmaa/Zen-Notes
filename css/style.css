@@ -1,5 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
+:root{
+    --primary-color: #1E2022;
+    --secondary-color: #52616B;
+    --third-color: #C9D6DF;
+    --text-color: #F0F5F9;
+    --transparent-bg: rgba(30 32 34/0.8);
+    --hover-color: radial-gradient(circle, #000000, #2e282d, #504d5d, #697a91, #7aabc1, #72b0bc, #71b3b3, #78b6a7, #5f8c77, #47644d, #2e3e28, #171c04);
+    --small-spacing: 0.5rem;
+    --medium-spacing: 1rem;
+    --huge-spacing: 2rem;
+    --height-card: 300px;
+    --width-card: 300px;
+}
+
 *{
     padding: 0;
     box-sizing: border-box;
@@ -11,29 +25,18 @@ button{
     border: none;
     outline: none;
     cursor: pointer;
-    background-color: rgb(159, 226, 221);
+    background-color: var(--primary-color);
     padding: 3px;
     border-radius: 5px;
+    color: var(--text-color);
 }
 
 button:hover{
-    background-color: white;
+    background-color: var(--hover-color);
 }
 
 button::after{
     background-color: whitesmoke;
-}
-
-:root{
-    --primary-color: #7895B2;
-    --secondary-color: #AEBDCA;
-    --third-color: #E8DFCA;
-    --fourth-color: #F5EFE6;
-    --small-spacing: 0.5rem;
-    --medium-spacing: 1rem;
-    --huge-spacing: 2rem;
-    --height-card: 300px;
-    --width-card: 300px;
 }
 
 /* Start of scrollbar designing */
@@ -43,12 +46,11 @@ body::-webkit-scrollbar {
 }
    
 body::-webkit-scrollbar-track {
-box-shadow: inset 0 0 6px rgba(255, 255, 255);
+    box-shadow: inset 0 0 6px rgba(255, 255, 255);
 }
 
 body::-webkit-scrollbar-thumb {
-background: linear-gradient(70deg, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
-outline: 1px solid rgb(247, 247, 247);
+    background: linear-gradient(70deg, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
 }
 /* End of scrollbar designing */
 
@@ -56,8 +58,8 @@ body{
     /* for smoot scroll behavior */
     scroll-behavior: smooth;
 
-    color: white;
-    background-color: black;
+    color: var(--text-color);
+    background-color: var(--primary-color);
     position: relative;
 
     min-height: 100vh;
@@ -85,6 +87,10 @@ input {
     border: none;
 }
 
+#format-options button:hover, #format-options-View button:hover{
+    color: var(--primary-color);
+    background-color: var(--text-color);
+}
 
 .overflow-desc{
     height: calc(4*(1.6em));
@@ -108,7 +114,7 @@ input {
     position: sticky;
     top: 0;
     z-index: 1;
-    background: black;
+    background: var(--secondary-color);
     padding: 2%;
 }
 
@@ -143,11 +149,11 @@ input {
 }
 
 footer p a:hover{
-    color: var(--fourth-color);
+    color: var(--hover-color);
 }
 
 footer p a{
-    color: var(--primary-color);
+    color: var(--third-color);
 }
 
 footer{
@@ -162,15 +168,41 @@ footer{
 #add-new{
     width: 50px;
     height: 50px;
-    background-color: var(--primary-color);
+    background-color: var(--third-color);
+    color: var(--primary-color);
     border: none;
     border-radius: 10px;
     font-size: 30px;
     align-items: center;
 }
 
+#live-code{
+    width: 150px;
+    height: 30px;
+    background-color: var(--third-color);
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    color: var(--primary-color);
+    align-items: center;
+    margin-top: 2px;
+}
+
+#live-code:hover{
+    width: 150px;
+    height: 30px;
+    background-color: var(--text-color);
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    color: var(--primary-color);
+    align-items: center;
+    margin-top: 2px;
+}
+
 #add-new:hover{
-    background-color: white;
+    background-color: var(--primary-color);
+    color: var(--third-color);
 }
 
 #add-new:focus{
@@ -204,9 +236,9 @@ main{
     
 }
 
-.add-card{
-    background-color: rgb(41 203 225 / 71%);
-    color: black;
+.add-card, .view-card{
+    background-color: var(--transparent-bg);
+    color: var(--text-color);
     border-radius: 8px;
     width: 100%;
     height: 100vh;
@@ -232,22 +264,7 @@ main{
     z-index: 3;
     border: none;
     background-color: transparent;
-    color: black;
-    padding: 20px;
-    margin: 20px;
-}
-
-.close-window-popup-add{
-    position: absolute;
-    top: 0;
-    right: 0;
-    font-size: 50px;
-    padding: 10px;
-    cursor: pointer;
-    z-index: 3;
-    border: none;
-    background-color: transparent;
-    color: black;
+    color: var(--third-color);
     padding: 20px;
     margin: 20px;
 }
@@ -262,35 +279,34 @@ main{
     z-index: 3;
     border: none;
     background-color: transparent;
-    color: brown;
+    color: var(--text-color);
     padding: 20px;
     margin: 20px;
 }
 
-
-
-.popup-container{
+.popup-container, .popup-update{
     display: flex;
     flex-flow: column wrap;
     justify-content: space-around;
     width: 50%;
     height: 500px;
-    background-color: var(--third-color);
+    background-color: var(--secondary-color);
     padding: 35px;
     border-radius: 20px;
 }
 
-.add-card .add-btn{
+.add-card .add-btn, button#update-btn{
     border: none;
-    background-color: brown;
+    background-color: var(--text-color);
     border-radius: 17px;
     padding: 10px;
     border: 1px solid black;
-    color: var(--fourth-color);
+    color: var(--primary-color);
 }
 
-.add-card .add-btn:hover{
-    background-color:rgb(181, 72, 18);
+.add-card .add-btn:hover, button#update-btn:hover{
+    background-color: var(--primary-color);
+    color: var(--text-color);
 }
 
 .add-card textarea{
@@ -313,8 +329,8 @@ main{
     
     border: none;
     outline: none;
-    color: rgb(7, 7, 7);
-    background: #111;
+    color: var(--secondary-color);
+    background: var(--third-color);
     cursor: pointer;
     position: relative;
     z-index: 0;
@@ -366,7 +382,7 @@ main{
     position: absolute;
     width: 100%;
     height: 100%;
-    background: rgb(236, 216, 216);
+    background: var(--third-color);
     left: 0;
     top: 0;
     border-radius: 20px;
@@ -380,9 +396,9 @@ main{
 
 /* Popup update */
 
-.view-card{
-    background-color: rgb(41 203 225 / 71%);
-    color: black;
+/* .view-card{
+    background-color: var(--transparent-bg);
+    color: var(--text-color);
     border-radius: 8px;
     width: 100%;
     height: 100vh;
@@ -392,7 +408,7 @@ main{
     position: fixed;
     z-index: 2;
     top: 0;
-}
+} */
 
 .view-card label{
     margin-top: 20px;
@@ -408,12 +424,12 @@ main{
     z-index: 3;
     border: none;
     background-color: transparent;
-    color: black;
+    color: var(--text-color);
     padding: 20px;
     margin: 20px;
 }
 
-.popup-update{
+/* .popup-update{
     display: flex;
     flex-flow: column wrap;
     justify-content: space-around;
@@ -422,16 +438,16 @@ main{
     background-color: var(--third-color);
     padding: 35px;
     border-radius: 20px;
-}
+} */
 
-.view-card #update-btn{
+/* .view-card #update-btn{
     border: none;
     background-color: brown;
     border-radius: 17px;
     padding: 10px;
     border: 1px solid black;
-    color: var(--fourth-color);
-}
+    color: var(--text-color); */
+/* } */
 
 .view-card #update-btn:hover{
     background-color:rgb(181, 72, 18);
@@ -447,7 +463,7 @@ main{
 .popup-edit-close-btn:hover{
 
     background-color: transparent;
-    color: brown;
+    color: var(--third-color);
 }
 
 
@@ -479,7 +495,6 @@ main{
     }
 }
 
-
 @media (width <480px) {
     .popup-container{
         display: flex;
@@ -487,7 +502,6 @@ main{
         justify-content: space-around;
         width: 90%;
         height: 78%;
-        background-color: var(--third-color);
         padding: 25px;
         border-radius: 20px;
     }
@@ -501,11 +515,9 @@ main{
         cursor: pointer;
         z-index: 3;
         border: none;
-        background-color: transparent;
-        color: black;
         padding: 20px;
         margin: 20px;
-        margin-top: 50px;
+        margin-top: 70px;
     }
 
     .popup-edit-close-btn{
@@ -517,11 +529,9 @@ main{
         cursor: pointer;
         z-index: 3;
         border: none;
-        background-color: transparent;
-        color: black;
         padding: 20px;
         margin: 20px;
-        margin-top: 50px;
+        margin-top: 70px;
     }
     .close-window-popup-add:hover{
         position: absolute;
@@ -532,8 +542,6 @@ main{
         cursor: pointer;
         z-index: 3;
         border: none;
-        background-color: transparent;
-        color: brown;
         padding: 20px;
         margin: 20px;
         margin-top: 50px;
@@ -547,8 +555,6 @@ main{
         cursor: pointer;
         z-index: 3;
         border: none;
-        background-color: transparent;
-        color: brown;
         padding: 20px;
         margin: 20px;
         margin-top: 50px;
@@ -560,7 +566,6 @@ main{
         justify-content: space-around;
         width: 90%;
         height: 78%;
-        background-color: var(--third-color);
         padding: 25px;
         border-radius: 20px;
     }
