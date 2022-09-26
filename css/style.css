@@ -46,9 +46,38 @@ a{
     text-decoration: none;
 }
 
-header h1{
+.overflow-title{
+    height: 10%;
+    width: 100%;
+    padding: 0% 4%;
+    overflow: hidden;
+    word-wrap: break-word; 
+    overflow-wrap: break-word;
+    text-overflow: ellipsis;
+    font-weight: 500;
+    margin-bottom: 5%;
+}
+
+
+.overflow-desc{
+    height: 40%;
+    width: 100%;
+    padding: 0% 4%;
+    overflow: hidden;
+    word-wrap: break-word; 
+    overflow-wrap: break-word;
+    text-overflow: ellipsis;
+    font-weight: 400;
+}
+
+#header h1{
     font-size: 2rem;
-    margin-left: 70px;
+}
+
+#header{
+    display: flex;
+    justify-content: space-around;      
+    align-items: center;
 }
 
 .card{
@@ -60,7 +89,6 @@ header h1{
     justify-content: center;
     align-items: center;
     border-radius: 8px;
-   
 }
 
 .desc-box{
@@ -136,6 +164,7 @@ main{
     gap: var(--small-spacing);
     margin: 30px;
     margin-left: 50px;
+    justify-content: space-around;
 }
 
 .add-card{
@@ -210,7 +239,6 @@ main{
     justify-content: center;
     align-items: center;
     border-radius: 8px;
-    
     margin: 20px;
 }
 

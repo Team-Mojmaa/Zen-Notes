@@ -28,9 +28,9 @@ function displayNewNoteInCardsView() {
     let newCard = document.createElement('section');
     newCard.innerHTML += `<div class="new-card" id=`+currentNote.idHash+`>
     <h2>Title</h2>
-    <p id="title`+currentNote.idHash+`">`+currentNote.title+`</p>
+    <h3 id="title`+currentNote.idHash+`" class="overflow-title">`+currentNote.title+`</h3>
     <h2>Description</h2>
-    <p id="desc`+currentNote.idHash+`">`+currentNote.description+`</p>
+    <p id="desc`+currentNote.idHash+`" class="overflow-desc">`+currentNote.description+`</p>
     </div>`;
     notesListView.appendChild(newCard); //visible on body
     console.log('step3(ii): display of currentNote on boday with idHash: ',currentNote.idHash)
@@ -77,10 +77,25 @@ function popUpUpdate(eventTarget){
             const updateBtn = document.getElementById("update-btn");
             const closeBtnView = document.getElementById("close-btn-View");
             const copyAllViewBtn = document.getElementById("copy-all-btn-View");
+
             boldBtnView.addEventListener('click', ()=>{
                 document.execCommand('bold');
                 var text = document.getElementById('descView').innerHTML;
                 
+            });
+
+            let descViewDiv = document.getElementById("descView");
+            descViewDiv.addEventListener('paste', (event) => {
+                event.preventDefault();
+            
+                let paste = (event.clipboardData || window.clipboardData).getData('text');
+                // console.log('paste object: ',paste)
+                // console.log('paste object: ',paste)
+            
+                const selection = window.getSelection();
+                if (!selection.rangeCount) return;
+                selection.deleteFromDocument();
+                selection.getRangeAt(0).insertNode(document.createTextNode(paste));
             });
 
             copyAllViewBtn.addEventListener('click', () => {
@@ -115,36 +130,46 @@ function popUpUpdate(eventTarget){
             updateBtn.addEventListener('click', ()=>{
                 var text = document.getElementById('descView').innerHTML;
                 var titleText = document.getElementById('titleView').value;
-                
-                note.description = text;
-                // updating altered note in notesList array
-                for (let noteObject of notesList){
-                    if (noteObject.idHash == note.idHash ){
-                        console.log("from inside the loop of.... updating altered note in notesList array ");
-                        noteObject.description = text;
-                        noteObject.title = titleText;
-                    }
-                }   
-                //delete prev with same id
-                // console.log('test by akash - '+popUpView);
-                // if(popUpView){
-                    // console.log('test by akash - '+popUpView);
-                console.log("!!!!!printing notesList array after popViewClose and array update:",notesList);
-                document.body.removeChild(popUpView);
-                // }
-                
-                let elem = document.getElementById(note.idHash);
-                let titleElem = elem.querySelector('#title'+note.idHash);
-                let descElem = elem.querySelector('#desc'+note.idHash);
 
-                console.log("VVIMP radhika/checkk:===> "+titleElem+" "+descElem);
-                descElem.innerHTML = text;
-                titleElem.innerHTML = note.title;
-                // if(elem)
-                // notesListView.removeChild(elem);
+                if (( text.length === 0) && (titleText.length === 0)){
+                    alert("Please enter Title and Description");
+                } else if (titleText.length === 0){
+                    alert("Please enter Title for the note");
+                } else if (text.length === 0) {
+                    alert("Please enter Description for the note");
+                } else {
+                    note.description = text;
+                    // updating altered note in notesList array
+                    for (let noteObject of notesList){
+                        if (noteObject.idHash == note.idHash ){
+                            console.log("from inside the loop of.... updating altered note in notesList array ");
+                            noteObject.description = text;
+                            noteObject.title = titleText;
+                        }
+                    }   
+                    //delete prev with same id
+                    // console.log('test by akash - '+popUpView);
+                    // if(popUpView){
+                        // console.log('test by akash - '+popUpView);
+                    console.log("!!!!!printing notesList array after popViewClose and array update:",notesList);
+                    document.body.removeChild(popUpView);
+                    // }
+                    
+                    let elem = document.getElementById(note.idHash);
+                    let titleElem = elem.querySelector('#title'+note.idHash);
+                    let descElem = elem.querySelector('#desc'+note.idHash);
+
+                    console.log("VVIMP radhika/checkk:===> "+titleElem+" "+descElem);
+                    descElem.innerHTML = text;
+                    titleElem.innerHTML = note.title;
+                    // if(elem)
+                    // notesListView.removeChild(elem);
+                    
+                    // displayNewNoteInCardsView();
+                    
+                }
                 
-                // displayNewNoteInCardsView();
-                
+            
             });             
         } 
     }
@@ -264,6 +289,20 @@ createButton.addEventListener('click', () => {
         
         document.getElementById("title").value = "";
         document.getElementById("desc").innerText = "";
+    });
+
+    let descDiv = document.getElementById("desc");
+    descDiv.addEventListener('paste', (event) => {
+        event.preventDefault();
+    
+        let paste = (event.clipboardData || window.clipboardData).getData('text');
+        // console.log('paste object: ',paste)
+        // console.log('paste object: ',paste)
+       
+        const selection = window.getSelection();
+        if (!selection.rangeCount) return;
+        selection.deleteFromDocument();
+        selection.getRangeAt(0).insertNode(document.createTextNode(paste));
     });
 
     // push bold, underline, copy data here later after figuring out selection and html part!!!!!!!!!!
