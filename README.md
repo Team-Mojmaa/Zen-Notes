@@ -17,6 +17,8 @@ It doesn't get more simple than this. Save any and all thoughts, ideas, recipes 
 1. User can clear entire note to edit note
 2. User can update a note with changes in text, bold or underline
 3. User can select text and copy it 
+4. Multiple Color Themes as per user selection using 'Paint Icon'
+5. User can delete a note by clicking on 'delete' button
 
 ## App Design and Flow 💫
 

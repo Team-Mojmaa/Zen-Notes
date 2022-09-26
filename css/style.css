@@ -6,7 +6,7 @@
     --third-color: #C9D6DF;
     --text-color: #F0F5F9;
     --transparent-bg: rgba(30 32 34/0.8);
-    --hover-color: radial-gradient(circle, #000000, #2e282d, #504d5d, #697a91, #7aabc1, #72b0bc, #71b3b3, #78b6a7, #5f8c77, #47644d, #2e3e28, #171c04);
+    --hover-color: var(var(--third-color));
     --small-spacing: 0.5rem;
     --medium-spacing: 1rem;
     --huge-spacing: 2rem;
@@ -19,6 +19,7 @@
     box-sizing: border-box;
     margin:0;
     font-family: 'Poppins', sans-serif; 
+    transition: all 0.2s ease-in-out;
 }
 
 button{
@@ -37,6 +38,37 @@ button:hover{
 
 button::after{
     background-color: whitesmoke;
+}
+
+/* change theme */
+
+#theme-change{
+    
+    width: 50px;
+    height: 50px;
+    background-color: var(--third-color);
+    color: var(--primary-color);
+    border: none;
+    border-radius: 10px;
+    align-items: center;
+    margin-top: -8px;
+    margin-left: 5px;
+}
+
+#theme-change:hover{
+    background-color: var(--text-color);
+    color: var(--primary-color);
+}
+
+.theme-change-img{
+    width: 45px;
+    height: 45px;
+    margin-top: -15px;
+    padding-top: 13px;
+}
+.theme-change:hover,.theme-change:focus{
+    background-color: var(--primary-color);
+    color:var(--text-color);
 }
 
 /* Start of scrollbar designing */
@@ -148,14 +180,6 @@ input {
     align-content: space-around;
 }
 
-footer p a:hover{
-    color: var(--hover-color);
-}
-
-footer p a{
-    color: var(--third-color);
-}
-
 footer{
     font-size: 0.8rem;
     display: flex;
@@ -163,6 +187,14 @@ footer{
     align-items: center;
     margin-top: auto;
     padding: 1%;
+}
+
+footer p a{
+    color: var(--third-color);
+}
+
+footer p a:hover{
+    color: var(--hover-color);
 }
 
 #add-new{
@@ -329,7 +361,7 @@ main{
     
     border: none;
     outline: none;
-    color: var(--primary-color);
+    color: var(--secondary-color);
     background: var(--third-color);
     cursor: pointer;
     position: relative;
