@@ -4,8 +4,26 @@
     padding: 0;
     box-sizing: border-box;
     margin:0;
-    font-family: 'Poppins', sans-serif   
+    font-family: 'Poppins', sans-serif; 
 }
+
+button{
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background-color: rgb(159, 226, 221);
+    padding: 3px;
+    border-radius: 5px;
+}
+
+button:hover{
+    background-color: white;
+}
+
+button::after{
+    background-color: whitesmoke;
+}
+
 :root{
     --primary-color: #7895B2;
     --secondary-color: #AEBDCA;
@@ -52,7 +70,7 @@ a{
 }
 
 .overflow-title{
-    height: 10%;
+    height: 1.4em;
     width: 100%;
     padding: 0% 4%;
     overflow: hidden;
@@ -65,7 +83,7 @@ a{
 
 
 .overflow-desc{
-    height: 40%;
+    height: calc(4*(1.6em));
     width: 100%;
     padding: 0% 4%;
     overflow: hidden;
@@ -147,7 +165,7 @@ footer{
 }
 
 #add-new:hover{
-    background-color: var(--third-color);
+    background-color: white;
 }
 
 #add-new:focus{
@@ -172,12 +190,13 @@ main{
 
 #notes-list{
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: var(--small-spacing);
     margin: 30px;
     margin-left: 50px;
     justify-content: center;
     justify-items: stretch;
+    
 }
 
 .add-card{
@@ -245,10 +264,10 @@ main{
 }
 
 .new-card{
-    height: 100%;
+    height: 200px;
     width: 95%;
     display: flex;
-    justify-content: center;
+    flex-direction: row;
     border-radius: 8px;
     padding: 3%;
 }
@@ -270,7 +289,6 @@ main{
     transform: scale(1.05);
     transition: 0.5s ease-in-out;
 }
-
 
 
 .new-card:before {
@@ -387,6 +405,32 @@ main{
     max-height: 30%;
     min-width: 100%;
     min-height: 30%;
+}
+
+@media (width > 570px) {
+    #notes-list{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: var(--small-spacing);
+        margin: 30px;
+        margin-left: 50px;
+        justify-content: center;
+        justify-items: stretch;
+        
+    }
+}
+
+@media (width > 867px) {
+    #notes-list{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(390px, 1fr));
+        gap: var(--small-spacing);
+        margin: 30px;
+        margin-left: 50px;
+        justify-content: center;
+        justify-items: stretch;
+        
+    }
 }
 
 

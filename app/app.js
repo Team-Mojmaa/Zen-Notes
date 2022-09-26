@@ -56,13 +56,13 @@ function popUpUpdate(eventTarget){
             <label for="descView">Description</label>
             <div name="descView" id="descView" col="20" rows="10"div contenteditable="true" role="textbox" name="desc" id="desc" col="20" rows="10" class="desc-box">`+note.description+`</div>
             <button id="update-btn">Update Note</button>
-            <input type="hidden" value="`+note.idHash+`">
             <div id="format-options-View">
                 <button id="bold-btn-View">Bold</button>
                 <button id="underline-btn-View">Underline</button>
-                <button id="copy-btn-View">Copy</button>
+                <button id="copy-btn-View">Copy <i class="fa-solid fa-copy"></i></button>
                 <button id="copy-all-btn-View">Copy All</button>
-            </div>`;
+            </div>
+            <input type="hidden" value="`+note.idHash+`">`;
             // display pop-up  
             // if plan to add delete button - take it from here
             // <button id="delete-btn-View">Delete</button></div>
