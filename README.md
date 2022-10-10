@@ -3,6 +3,7 @@
 It doesn't get more simple than this. Save any and all thoughts, ideas, recipes in one app: Zen Notes
 
 🔗Live Link: [https://zen-note.netlify.app/](https://zen-note.netlify.app/)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/4a567912-ea3f-4d27-9a45-8d2045e8d234/deploy-status)](https://app.netlify.com/sites/zen-note/deploys)
 </code>
 ## Features 💫
 
