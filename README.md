@@ -50,7 +50,7 @@ It doesn't get more simple than this. Save any and all thoughts, ideas, recipes 
 3. CSS
 
 ## Connect with the Makers
-- [Akash](https://github.com/AkashsRepositories)
+- [Akash](https://github.com/aakashjangra)
 - [Radhika](https://github.com/radhika2104)
 - [Prantik](http://github.com/prantikseal)
 - [Vinit](https://github.com/vinit717)
